@@ -7,6 +7,8 @@ A Tampermonkey userscript that enhances Migaku Memory with custom heatmap functi
 - Automatically processes tooltips and heatmap tiles on the Migaku Memory website.
 - Applies a gradient background to heatmap tiles based on review counts.
 
+![Migaku Heatmap Example](/images/heatmap-example.png "Heatmap Screenshot")
+
 ---
 
 ## Installation
@@ -28,6 +30,7 @@ A Tampermonkey userscript that enhances Migaku Memory with custom heatmap functi
 
 1. Navigate to [Migaku Memory](https://study.migaku.com/statistic).
 2. The script will automatically run and enhance the heatmap functionality.
+3. Refresh the page the gradients do not appear.
 
 ---
 
