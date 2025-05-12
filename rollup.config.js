@@ -30,8 +30,8 @@ export default {
     resolve(),
     commonjs(),
     babel({
-        babelHelpers: 'bundled',
-        exclude: 'node_modules/**',
-      }),
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**',
+    }),
   ],
 };
