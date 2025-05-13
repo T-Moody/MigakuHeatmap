@@ -1,11 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
-
-// Read version from package.json
-const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
-const version = packageJson.version;
 
 const githubUsername = 'T-Moody';
 const githubRepo = 'MigakuHeatmap';
@@ -14,7 +9,7 @@ const metadata = `
 // ==UserScript==
 // @name         Migaku Custom Heatmap
 // @namespace    http://tampermonkey.net/
-// @version      ${version}
+// @version      1.0.0
 // @description  Custom stats for Migaku Memory.
 // @author       tmoody
 // @license      GPL-3.0
