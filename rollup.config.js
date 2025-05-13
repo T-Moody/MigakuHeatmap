@@ -3,17 +3,26 @@ import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
+// Read version from package.json
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
+const version = packageJson.version;
+
+const githubUsername = 'T-Moody';
+const githubRepo = 'MigakuHeatmap';
+
 const metadata = `
 // ==UserScript==
 // @name         Migaku Custom Heatmap
 // @namespace    http://tampermonkey.net/
-// @version      0.1.0
+// @version      ${version}
 // @description  Custom stats for Migaku Memory.
 // @author       tmoody
 // @license      GPL-3.0
 // @match        https://study.migaku.com/*
 // @run-at       document-idle
 // @grant        GM_addStyle
+// @updateURL    https://raw.githubusercontent.com/${githubUsername}/${githubRepo}/release/bundle.js
+// @downloadURL  https://raw.githubusercontent.com/${githubUsername}/${githubRepo}/release/bundle.js
 // ==/UserScript==
 `;
 
@@ -30,8 +39,8 @@ export default {
     resolve(),
     commonjs(),
     babel({
-        babelHelpers: 'bundled',
-        exclude: 'node_modules/**',
-      }),
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**',
+    }),
   ],
 };

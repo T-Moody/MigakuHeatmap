@@ -1,0 +1,42 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Push to release branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout --orphan release
+          git rm -rf .
+          cp dist/bundle.js .
+          git add bundle.js
+          git commit -m "Release bundle.js"
+          git push origin release --force
+
+      - name: Tag release
+        run: |
+          VERSION=$(jq -r .version package.json)
+          git tag "v$VERSION"
+          git push origin "v$VERSION"

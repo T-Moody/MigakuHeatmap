@@ -124,7 +124,7 @@ function applyGradientToHeatmapTiles(heatmapTiles, tooltipData, maxReviewCount) 
         if (reviewCount !== undefined) {
             const opacity = reviewCount / maxReviewCount;
             console.log(`[MIGAKU_STATS] Tile linked to tooltip ID: ${tooltipId}, review count: ${reviewCount}, opacity: ${opacity}`);
-            tile.style.setProperty("background-color", `rgba(0, 255, 0, ${opacity})`, "important");
+            tile.style.setProperty("background-color", `rgba(1, 199, 164, ${opacity})`, "important");
         } else {
             console.warn(`[MIGAKU_STATS] No review count found for heatmap tile linked to tooltip ID: ${tooltipId}`);
         }
