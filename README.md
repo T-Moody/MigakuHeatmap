@@ -18,7 +18,7 @@ A Tampermonkey userscript that enhances Migaku Memory with custom heatmap functi
 1. Go to the [Release Script](https://raw.githubusercontent.com/T-Moody/MigakuHeatmap/release/bundle.js)
 2. Download the file or copy the code in bundle.js
 
-### Step 2: Add the Script to [Tampermonkey](https://www.tampermonkey.net/)
+### Step 2: Add the Script to the [Tampermonkey](https://www.tampermonkey.net/) extension
 
 1. Open Tampermonkey in your browser.
 2. Click on **Create a new script**.
