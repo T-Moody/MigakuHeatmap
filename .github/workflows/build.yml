@@ -35,9 +35,3 @@ jobs:
           git add bundle.js
           git commit -m "Release bundle.js"
           git push origin release --force
-
-      - name: Tag release
-        run: |
-          VERSION=$(jq -r .version package.json)
-          git tag "v$VERSION"
-          git push origin "v$VERSION"
