@@ -1,12 +1,18 @@
 
 // Main entry point
-document.addEventListener("DOMContentLoaded", () => {
+if (document.readyState === "loading") {
     console.log("[MIGAKU_STATS] DOM fully loaded. Setting up MutationObserver...");
 
     // Initialize the observer and process tooltips
     setupObserver();
     processTooltips();
-});
+} else {
+    console.log("[MIGAKU_STATS] DOM already loaded loaded. Setting up MutationObserver...");
+
+    // Initialize the observer and process tooltips
+    setupObserver();
+    processTooltips();
+}
 
 /**
  * Sets up a MutationObserver to watch for changes in the DOM.
@@ -122,7 +128,7 @@ function applyGradientToHeatmapTiles(heatmapTiles, tooltipData, maxReviewCount) 
         const reviewCount = tooltipData[tooltipId];
 
         if (reviewCount !== undefined) {
-            const opacity = reviewCount / maxReviewCount;
+            const opacity = Math.max(0.05, reviewCount / maxReviewCount);
             console.log(`[MIGAKU_STATS] Tile linked to tooltip ID: ${tooltipId}, review count: ${reviewCount}, opacity: ${opacity}`);
             tile.style.setProperty("background-color", `rgba(1, 199, 164, ${opacity})`, "important");
         } else {
