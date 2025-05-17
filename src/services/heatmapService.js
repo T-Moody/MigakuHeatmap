@@ -18,13 +18,28 @@ export function applyGradientToHeatmapTiles(tiles, tooltipData, maxReviewCount) 
     tiles.forEach(tile => {
         const tooltipId = tile.getAttribute("aria-controls");
         const reviewCount = tooltipData[tooltipId];
-        if (reviewCount !== undefined) {
-            const opacity = Math.max(MIN_OPACITY, reviewCount / maxReviewCount);
-            log(`Tile linked to tooltip ID: ${tooltipId}, review count: ${reviewCount}, opacity: ${opacity}`);
-            tile.style.setProperty("background-color", `rgba(${HEATMAP_COLOR}, ${opacity})`, "important");
-        } else {
+
+        if (reviewCount === undefined) {
             warn(`No review count found for heatmap tile linked to tooltip ID: ${tooltipId}`);
+            return;
         }
+
+        const opacity = calculateOpacity(reviewCount, maxReviewCount);
+        setTileColor(tile, opacity);
+        logTileUpdate(tooltipId, reviewCount, opacity);
     });
+
     log("Gradient application completed.");
+}
+
+function calculateOpacity(reviewCount, maxReviewCount) {
+    return Math.max(MIN_OPACITY, reviewCount / maxReviewCount);
+}
+
+function setTileColor(tile, opacity) {
+    tile.style.setProperty("background-color", `rgba(${HEATMAP_COLOR}, ${opacity})`, "important");
+}
+
+function logTileUpdate(tooltipId, reviewCount, opacity) {
+    log(`Tile linked to tooltip ID: ${tooltipId}, review count: ${reviewCount}, opacity: ${opacity}`);
 }
