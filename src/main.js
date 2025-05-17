@@ -14,6 +14,14 @@ if (document.readyState === "loading") {
     processTooltips();
 }
 
+function removeLegendsAndDividers() {
+    const legends = document.querySelectorAll('.Statistic__legends');
+    legends.forEach(el => el.remove());
+
+    const dividers = document.querySelectorAll('.Statistic__card__divider');
+    dividers.forEach(el => el.remove());
+}
+
 /**
  * Sets up a MutationObserver to watch for changes in the DOM.
  */
@@ -30,6 +38,8 @@ function setupObserver() {
  * Processes all tooltips in the DOM.
  */
 function processTooltips() {
+    removeLegendsAndDividers();
+
     const tooltips = getTooltips();
     if (tooltips.length === 0) {
         console.warn("[MIGAKU_STATS] No tooltips found. Waiting for DOM updates...");
