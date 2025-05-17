@@ -9,7 +9,7 @@ const metadata = `
 // ==UserScript==
 // @name         Migaku Custom Heatmap
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Custom stats for Migaku Memory.
 // @author       tmoody
 // @license      GPL-3.0
