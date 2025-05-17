@@ -13,7 +13,7 @@ const metadata = `
 // @description  Custom stats for Migaku Memory.
 // @author       tmoody
 // @license      GPL-3.0
-// @match        https://study.migaku.com/*
+// @match        https://study.migaku.com/statistic
 // @run-at       document-idle
 // @grant        GM_addStyle
 // @updateURL    https://raw.githubusercontent.com/${githubUsername}/${githubRepo}/release/bundle.js
